@@ -1,0 +1,7 @@
+# Fins de linha consistentes em qualquer sistema (o Git do Windows usa CRLF por padrao)
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jpg binary
+*.ico binary
+*.ttf binary

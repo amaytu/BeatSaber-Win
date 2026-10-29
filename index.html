@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://*.beatsaver.com; media-src 'self' blob: mediastream: https://*.beatsaver.com; connect-src 'self' blob: data:; worker-src 'self' blob:; font-src 'self'" />
+  <title>Win Saber</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <canvas id="gl"></canvas>
+  <div id="hud" class="hidden"></div>
+  <div id="ui"></div>
+  <div id="cam" class="hidden"><canvas id="camCanvas"></canvas><span id="camInfo"></span></div>
+  <div id="toast"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

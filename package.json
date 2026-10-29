@@ -1,0 +1,60 @@
+{
+  "name": "win-saber",
+  "productName": "Win Saber",
+  "version": "1.0.0",
+  "description": "Jogo de ritmo neon para Windows: corte cubos no ritmo da música com o teclado ou com as mãos pela webcam.",
+  "author": "GabrielUtyama",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "postinstall": "node scripts/fetch-assets.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc --noEmit && vite build",
+    "start": "npm run build && electron .",
+    "test": "vitest run",
+    "icon": "python tools/make_icon.py",
+    "dist": "npm run build && electron-builder --win nsis portable"
+  },
+  "build": {
+    "appId": "com.winsaber.app",
+    "productName": "Win Saber",
+    "copyright": "Win Saber",
+    "files": [
+      "electron/**",
+      "dist/**",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": ["nsis", "portable"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Win Saber",
+      "artifactName": "WinSaber-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "WinSaber-Portable-${version}.${ext}"
+    }
+  },
+  "dependencies": {
+    "jszip": "^3.10.2"
+  },
+  "devDependencies": {
+    "@mediapipe/tasks-vision": "^1.2.0",
+    "@types/three": "^0.186.0",
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0",
+    "three": "^0.186.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}
